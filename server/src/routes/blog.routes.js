@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { addComment, createBlog, deleteBlog, getAllBlogs, getBlogsByID, getComment, getFeedBlogs, toggleLike, updateBlog } from "../controller/blog.controller.js";
+import { createBlog, deleteBlog, getAllBlogs, getBlogsByID, getFeedBlogs, toggleLike, updateBlog } from "../controller/blog.controller.js";
 import { isAuthenticated } from "../middlewares/auth.middleware.js";
+import { addComment, getComment } from "../controller/comment.controller.js";
 
 const blogRouter = Router();
 

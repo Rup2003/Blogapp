@@ -9,6 +9,7 @@ userRouter.post("/login",loginUser)
 userRouter.get("/logout", isAuthenticated, logoutUser)
 userRouter.post("/register", registerUser)
 userRouter.put("/updateUser",isAuthenticated, updateUser)
+userRouter.get("/Profile", isAuthenticated, getProfile)
 
 userRouter.put(
   "/update",

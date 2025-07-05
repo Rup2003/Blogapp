@@ -1,10 +1,10 @@
-import Blog from "../models/blog.model";
-import Comment from "../models/comment.model";
-import Like from "../models/like.model";
-import User from "../models/user.models";
-import { ApiError } from "../utils/api-error";
-import { ApiResponse } from "../utils/api-response";
-import { asyncHandler } from "../utils/async-handler";
+import Blog from "../models/blog.model.js";
+import Comment from "../models/comment.model.js";
+import Like from "../models/like.model.js";
+import User from "../models/user.models.js";
+import { ApiError } from "../utils/api-error.js";
+import { ApiResponse } from "../utils/api-response.js";
+import { asyncHandler } from "../utils/async-handler.js";
 
 export const addComment = asyncHandler(async (req, res, next) => {
     const { content } = req.body;

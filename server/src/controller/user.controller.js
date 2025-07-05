@@ -74,16 +74,15 @@ export const logoutUser = asyncHandler(async (req, res, next) => {
 });
 
 export const updateUser = asyncHandler(async (req, res, next) => {
-  const{username,bio,twitter,github,website}=req.body;
-  const userId=req.id;
+  const { username, bio, twitter, github, website } = req.body;
+  const userId = req.id;
 
-
-  if(Object.keys(req.body).length ===0){
-    throw new ApiError(400,"NO DATA IS PROVIED");
+  if (Object.keys(req.body).length === 0) {
+    throw new ApiError(400, "NO DATA IS PROVIED");
   }
 
   const user = await User.findById(userId);
-  
+
   if (!user) {
     throw new ApiError(404, "User not found");
   }
@@ -106,19 +105,19 @@ export const updateUser = asyncHandler(async (req, res, next) => {
     user.avatar.public_id = result.public_id;
   }
 
-  if(username) user.username =username;
-  if(bio) user.bio=bio;
-  if(twitter) user.socialLinks.twitter=twitter;
-  if(github) user.socialLinks.github =github;
-  if(website) user.socialLinks.website=website;
+  if (username) user.username = username;
+  if (bio) user.bio = bio;
+  if (twitter) user.socialLinks.twitter = twitter;
+  if (github) user.socialLinks.github = github;
+  if (website) user.socialLinks.website = website;
 
-   await user.save();
+  await user.save();
 
   // const {id} = req.params;
   // console.log(id);
   return res
     .status(200)
-    .json(new ApiResponse(200,null, "USER UPDATED SUCCESSFULLY"));
+    .json(new ApiResponse(200, null, "USER UPDATED SUCCESSFULLY"));
 });
 
 export const toggleFollow = asyncHandler(async (req, res, next) => {
@@ -168,5 +167,18 @@ export const toggleFollow = asyncHandler(async (req, res, next) => {
   await user.save();
   await userToFollow.save();
 
-  return res.status(200).json(new ApiResponse(200, null, message));
+  return res.status(200).json(new ApiResponse(200, null, message));
+});
+
+export const getProfile = asyncHandler(async(req,res,next)=>{
+  const userId = req.id;
+
+  const user = await User.findById(userId).select("-password -createdAt -updatedAt",);
+
+  if(!user){
+    throw new ApiError(404,"user not found");
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200 ,user , "user fetched successfully"));
 });

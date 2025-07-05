@@ -12,7 +12,7 @@ const items =[
 
 export const Footer = () => {
   return (
-    <div className='absolute bottom-0 left-0 w-full border-t py-4'>
+    <div className='absolute bottom-0 left-0 w-full  py-4'>
         <div className=" flex items-center justify-center h-full w-full gap-10">
         {items.map((item)=>(
           <span
