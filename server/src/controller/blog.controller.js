@@ -20,6 +20,20 @@ export const getAllBlogs = asyncHandler(async (req, res, next) => {
     .json(new ApiResponse(200, blogs, `blogs successfully send`));
 });
 
+export const getUserBlogs = asyncHandler(async (req, res, next) => {
+  const userId = req.id;
+
+  const blogs = await Blog.find({ author: userId });
+
+  if (!blogs) {
+    throw new ApiError(404, "Blogs not found");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, blogs, "User Blogs Fetched"));
+});
+
 export const getFeedBlogs = asyncHandler(async (req, res, next) => {
   const userId = req.id;
 

@@ -50,7 +50,7 @@ export const Navbar = () => {
             Our Story
           </Link>
           <Link
-            to="/write"
+            to="/create"
             className="flex items-center gap-2 text-purple-100 hover:text-white font-medium transition-colors text-[15px] uppercase tracking-wider px-1 py-1"
           >
             <FaPen className="text-sm" />
@@ -62,7 +62,7 @@ export const Navbar = () => {
         {authUser ? (
           <div className="flex items-center gap-5 ml-6">
             <Link
-              to="/write"
+              to="/create"
               className="hidden lg:flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-full text-[15px] font-medium hover:opacity-90 transition-opacity shadow-xl hover:shadow-violet-500/40"
             >
               <FaPen className="text-sm" />
@@ -104,7 +104,7 @@ export const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/write"
+                    to="/create"
                     className="flex items-center gap-3 text-purple-100 hover:bg-purple-800/60 rounded-lg px-4 py-3 text-[15px] transition-colors"
                   >
                     <FaPen className="text-sm" />
@@ -170,7 +170,7 @@ export const Navbar = () => {
             Our Story
           </Link>
           <Link
-            to="/write"
+            to="/create"
             className="flex items-center gap-3 text-purple-100 hover:text-white hover:bg-purple-800/60 font-medium transition-colors text-[15px] py-3 px-4 rounded-lg"
             onClick={toggleMobileMenu}
           >
@@ -206,7 +206,7 @@ export const Navbar = () => {
                 Profile
               </Link>
               <Link
-                to="/write"
+                to="/create"
                 className="flex items-center gap-3 text-purple-100 hover:text-white hover:bg-purple-800/60 text-[15px] py-3 px-4 rounded-lg transition-colors"
                 onClick={toggleMobileMenu}
               >
