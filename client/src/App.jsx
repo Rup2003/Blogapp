@@ -9,6 +9,8 @@ import AnimatedBackground from "../components/AnimatedBackground"; // Add this i
 import { useEffect, useState } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import { useAuthstores } from "./store/useAuthstores";
+import ProtectedRoutes from "../components/ProtectedRoutes";
+import { BlogsPage } from "./pages/BlogPage";
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +38,7 @@ export const App = () => {
           </Route>
           <Route path="/blog/:id" element={<h1>Blog Preview</h1>} />
           <Route path="/blog/create" element={<h1>Blog Creation</h1>} />
+           <Route path="/blogs" element={<ProtectedRoutes> <BlogsPage /> </ProtectedRoutes>}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
