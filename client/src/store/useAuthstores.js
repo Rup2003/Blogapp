@@ -23,12 +23,19 @@ export const useAuthstores = create((set) => ({
     }
   },
 
-  loginUser: async() => {
+  loginUser: async(data) => {
     set({ isloggingin: true});
+    console.log(data);
+    
     try{
       const res = await axiosInstance.post("/user/login",data);
+      console.log(res);
+      
       set({ authUser: res.data.data });
-      toast.success(res.data.message);
+      
+      if (res.data.success) {  
+        toast.success(res.data.message);
+      }
     } catch(error){
       toast.error(error.response.data.message);
     } finally{
@@ -36,7 +43,7 @@ export const useAuthstores = create((set) => ({
     }
   },
 
-  registerUser: async()=> {
+  registerUser: async(data)=> {
     set({isRegistered: true });
     try{
       const res = await axiosInstance.post("/user/register", data);

@@ -12,14 +12,17 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const { isLoggingIn, loginUser } = useAuthstores();
+  const { isLoggingin, loginUser } = useAuthstores();
 
   const submitInputHandler = async () => {
+  
     try {
       await loginUser({ username, email, password });
       navigate("/");
     } catch (error) {
       toast.error(error);
+      console.log(error);
+      
     }
   };
 
@@ -84,11 +87,11 @@ export const LoginPage = () => {
           {/* Submit Button */}
           <button
             onClick={submitInputHandler}
-            disabled={isLoggingIn}
+            disabled={isLoggingin}
             className="btn w-full mt-4"
             style={{ backgroundColor: "#a737c4" }}
           >
-            {isLoggingIn ? (
+            {isLoggingin ? (
               <div className="flex items-center justify-center gap-2">
                 <FiLoader className="animate-spin" />
                 <span>Signing in...</span>

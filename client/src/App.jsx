@@ -8,12 +8,15 @@ import Loader from "../components/Loader";
 import AnimatedBackground from "../components/AnimatedBackground"; // Add this import
 import { useEffect, useState } from "react";
 import ProfilePage from "./pages/ProfilePage";
+import { useAuthstores } from "./store/useAuthstores";
 
 export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-  
+  const {getProfile} = useAuthstores();
+
   useEffect(() => {
     const timeout = setTimeout(() => setIsLoading(false), 3500);
+    getProfile();
     return () => clearTimeout(timeout);
   }, []);
 

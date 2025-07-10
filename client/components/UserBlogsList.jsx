@@ -1,7 +1,7 @@
 import { FaPen, FaFeather } from "react-icons/fa";
 import { Link } from "react-router";
 import BlogCard from "./BlogCard";
-import { useBlogStore } from "/home/rupak/Blog app/client/src/store/useBlogStore.jsx";
+import { useBlogStore } from "/home/rupak/Blog app/client/src/store/useBlogStore.js";
 
 const UserBlogsList = () => {
   const { authorBlogs } = useBlogStore();
